@@ -1,0 +1,409 @@
+{% load static %}
+<!doctype html>
+<html lag="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Alzheimer Disease Prediction - Free Bootstrap 5.2.2 CSS Template</title>
+
+        <!-- CSS FILES -->        
+        <link href="{% static 'css/bootstrap.min.css' %} " rel="stylesheet">
+
+        <link href="{% static 'css/bootstrap-icons.css' %}" rel="stylesheet">
+
+        <link href="{% static 'css/templatemo-kind-heart-charity.css' %}" rel="stylesheet">
+<!--
+
+TemplateMo 581 Alzheimer Disease Prediction
+
+https://templatemo.com/tm-581-Alzheimer Disease Prediction
+
+-->
+
+    </head>
+    
+    <body id="section_1">
+        <header class="site-header">
+            <div class="container-fluid px-5">
+                <div class="row">
+                    <div class="col-lg-8 col-12 d-flex flex-wrap">
+                        <p class="d-flex me-4 mb-0">
+                            <i class="bi-geo-alt me-2"></i>
+                            Department of Health.
+                        </p>
+
+                        <p class="d-flex mb-0">
+                            <i class="bi-envelope me-2"></i>
+                            <a href="mailto:alzproject.support@gmail.com">
+                                alzproject.support@gmail.com
+                            </a>
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-12 ms-auto d-lg-block d-none">
+                        <ul class="social-icon">
+                            <li class="social-icon-item">
+                                <a href="{% static '#' %}" class="social-icon-link bi-twitter"></a>
+                            </li>
+
+                            <li class="social-icon-item">
+                                <a href="{% static '#' %}" class="social-icon-link bi-facebook"></a>
+                            </li>
+
+                            <li class="social-icon-item">
+                                <a href="{% static '#' %}" class="social-icon-link bi-instagram"></a>
+                            </li>
+
+                            <li class="social-icon-item">
+                                <a href="{% static '#' %}" class="social-icon-link bi-youtube"></a>
+                            </li>
+
+                            <li class="social-icon-item">
+                                <a href="{% static '#' %}" class="social-icon-link bi-whatsapp"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+       <nav class="navbar navbar-expand-lg bg-light shadow-lg">
+           <div class="container-fluid px-5">
+                <a class="navbar-brand" href="{% url 'index' %}">
+                <img src="{% static 'images/newlogo.png' %}" class="logo img-fluid" alt="Alzheimer Disease Prediction">
+                <span>
+                    Alzheimer Disease Prediction
+                    <small>AI-based Health Solution</small>
+                </span>
+                </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#top">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#section_2">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#section_3">How it Works</a>
+                </li>
+                {% comment %} <li class="nav-item">
+                    <a class="nav-link" href="#upload">Upload MRI</a>
+                </li> {% endcomment %}
+                {% comment %} <li class="nav-item">
+                    <a class="nav-link" href="/login/">Login</a>
+                </li> {% endcomment %}
+                <li class="nav-item ms-3">
+                    <a class="nav-link custom-btn custom-border-btn btn" href="/login/">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main>
+         <section class="section-padding">
+             <div class="container-fluid px-5">
+                    <div class="row">
+
+                        <div class="col-lg-12 col-12 p-0">
+                            <div id="hero-slide" class="carousel carousel-fade slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="{% static 'images/slide/volunteer-helping-with-donation-box.jpg' %} " class="carousel-image img-fluid" alt="...">
+                                        
+                                        <div class="carousel-caption d-flex flex-column justify-content-end">
+                                            <h1> Alzheimer </h1>
+                                            
+                                            <p>Detect Alzheimer’s Disease from MRI Images Using AI</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="carousel-item">
+                                        <img src="{% static 'images/slide/volunteer-selecting-organizing-clothes-donations-charity.jpg' %}" class="carousel-image img-fluid" alt="...">
+                                        
+                                        <div class="carousel-caption d-flex flex-column justify-content-end">
+                                            <h2>AI in Brain Health</h2>
+                                            
+                                            <p>Early detection with MRI & deep learning</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="carousel-item">
+                                        <img src="{% static 'images/slide/awareness.jpg' %}" class="carousel-image img-fluid" alt="...">
+                                        
+                                        <div class="carousel-caption d-flex flex-column justify-content-end">
+                                            <h1>Detect Early</h1>
+                                            
+                                            <p>Help spread awareness for early diagnosis</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button class="carousel-control-prev" type="button" data-bs-target="#hero-slide" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+
+                                <button class="carousel-control-next" type="button" data-bs-target="#hero-slide" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-10 col-12 text-center mx-auto">
+                <h2 class="mb-5">Welcome to Alzheimer Disease Prediction</h2>
+            </div> 
+
+            <!-- Upload MRI Image -->
+            <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
+                <div class="featured-block d-flex justify-content-center align-items-center">
+                    <a href="#upload-section" class="d-block">
+                        <img src="{% static 'images/icons/upload.jpg' %}" class="featured-block-image img-fluid" alt="">
+                        <p class="featured-block-text"><strong>Upload</strong> MRI Image</p>
+                    </a>
+                </div>
+            </div>
+
+
+            <!-- Model Prediction -->
+            <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
+                <div class="featured-block d-flex justify-content-center align-items-center">
+                    <a href="#predict-section" class="d-block">
+                        <img src="{% static 'images/icons/brain.jpg' %}" class="featured-block-image img-fluid" alt="">
+                        <p class="featured-block-text">AI <strong>Prediction</strong></p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Accuracy Insight -->
+            <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
+                <div class="featured-block d-flex justify-content-center align-items-center">
+                    <a href="#accuracy-section" class="d-block">
+                        <img src="{% static 'images/icons/accuracy.jpg' %}" class="featured-block-image img-fluid" alt="">
+                        <p class="featured-block-text">Model <strong>Accuracy</strong></p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Report Section -->
+            <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
+                <div class="featured-block d-flex justify-content-center align-items-center">
+                    <a href="#report-section" class="d-block">
+                        <img src="{% static 'images/icons/report.jpg' %}" class="featured-block-image img-fluid" alt="">
+                        <p class="featured-block-text"><strong>Diagnosis</strong> Report</p>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+            <section class="section-padding section-bg" id="section_2">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-12 mb-5 mb-lg-0">
+                            <img src="{% static 'images/group-people-volunteering-foodbank-poor-people.jpg' %}" class="custom-text-box-image img-fluid" alt="">
+                        </div>
+
+                        <div class="col-lg-6 col-12">
+                            <div class="custom-text-box">
+                                <h2 class="mb-2">Our Story</h2>
+
+                                <h5 class="mb-3">Alzheimer Disease Prediction Predict</h5>
+
+                                <p class="mb-0">“This project uses Machine Learning to detect Alzheimer's from MRI scans. Trained on standard dataset. Built with Python, Django & TensorFlow."</p>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="custom-text-box mb-lg-0">
+                                        <h5 class="mb-3">Our Mission</h5>
+
+                                        <p>Our mission is to leverage the power of Artificial Intelligence to support early and accurate detection of Alzheimer’s Disease using MRI scans."</p>
+
+                                        <ul class="custom-list mt-2">
+                                            <li class="custom-list-item d-flex">
+                                                <i class="bi-check custom-text-box-icon me-2"></i>
+                                                 AI-Based MRI Image Analysis
+                                            </li>
+                                            <li class="custom-list-item d-flex">
+                                                <i class="bi-check custom-text-box-icon me-2"></i>
+                                                Predict Alzheimer’s Stages Accurately
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-12">
+    <div class="custom-text-box d-flex flex-wrap d-lg-block mb-lg-0">
+        
+        <div class="counter-thumb"> 
+            <div class="d-flex">
+                <span class="counter-number" data-from="1" data-to="2025" data-speed="1000"></span>
+                <span class="counter-number-text"></span>
+            </div>
+            <span class="counter-text">Project Started</span>
+        </div> 
+
+        <div class="counter-thumb mt-4"> 
+            <div class="d-flex">
+                <span class="counter-number" data-from="1" data-to="95" data-speed="1000"></span>
+                <span class="counter-number-text">%</span>
+            </div>
+            <span class="counter-text">Model Accuracy</span>
+        </div>  
+
+        <div class="counter-thumb mt-4"> 
+            <div class="d-flex">
+                <span class="counter-number" data-from="1" data-to="1000" data-speed="1000"></span>
+                <span class="counter-number-text">+</span>
+            </div>
+            <span class="counter-text">MRI Images Trained</span>
+        </div>  
+
+        <div class="counter-thumb mt-4"> 
+            <div class="d-flex">
+                <span class="counter-number" data-from="1" data-to="5" data-speed="1000"></span>
+                <span class="counter-number-text"> Sec</span>
+            </div>
+            <span class="counter-text">Prediction Time</span>
+        </div>  
+        
+    </div>
+</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="about-section section-padding">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-6 col-md-5 col-12">
+                 <img src="{% static 'images/founder.jpeg' %}" class="about-image ms-lg-auto bg-light shadow-lg img-fluid" alt="MRI Analysis">
+            </div>
+
+
+            <div class="col-lg-5 col-md-7 col-12">
+                <div class="custom-text-block">
+                    <h2 class="mb-0">Dr. Alois Alzheimer</h2>
+
+                    <p class="text-muted mb-lg-4 mb-md-4">Developer & Researcher</p>
+
+                    <p>"Alzheimer's disease is named after Dr. Alois Alzheimer, a German psychiatrist and pathologist who first described the disease in 1906 after observing changes in the brain tissue of a patient who died with unusual mental illness. While Dr. Alzheimer made the initial discovery and description, numerous researchers and developers have since contributed to understanding and developing treatments for Alzheimer's disease".</p>
+
+                    <p>We use deep learning models trained on medical imaging datasets to classify Alzheimer's stages with accuracy and speed.</p>
+                                <ul class="social-icon mt-4">
+                                    <li class="social-icon-item">
+                                        <a href="{% static '#' %}" class="social-icon-link bi-twitter"></a>
+                                    </li>
+
+                                    <li class="social-icon-item">
+                                        <a href="{% static '#' %}" class="social-icon-link bi-facebook"></a>
+                                    </li>
+
+                                    <li class="social-icon-item">
+                                        <a href="{% static '#' %}" class="social-icon-link bi-instagram"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            
+        <section class="section-padding" id="section_3">
+            <div class="container">
+                    <div class="row">
+
+                <div class="col-lg-12 col-12 text-center mb-4">
+                    <h2>Our Contributions</h2>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                    <div class="custom-block-wrap">
+                        <img src="{% static 'images/causes/mri-scan.jpeg' %}" class="custom-block-image img-fluid" alt="MRI Scan">
+
+                    <div class="custom-block">
+                        <div class="custom-block-body">
+                            <h5 class="mb-3">MRI-Based Diagnosis</h5>
+                            <p>Detect Alzheimer's Disease from brain MRI images using trained deep learning models.</p>
+                        </div>
+                        <a href="#upload-section" class="custom-btn btn">Try Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                <div class="custom-block-wrap">
+                    <img src="{% static 'images/causes/model-accuracy.jpg' %}" class="custom-block-image img-fluid" alt="Model Accuracy">
+
+                    <div class="custom-block">
+                        <div class="custom-block-body">
+                            <h5 class="mb-3">High Accuracy</h5>
+                            <p>Achieved over 95% accuracy in early-stage Alzheimer’s prediction using CNN models.</p>
+                        </div>
+                        <a href="#about-section" class="custom-btn btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-12">
+                <div class="custom-block-wrap">
+                    <img src="{% static 'images/causes/report-generation.jpg' %}" class="custom-block-image img-fluid" alt="Prediction Report">
+
+                    <div class="custom-block">
+                        <div class="custom-block-body">
+                            <h5 class="mb-3">Detailed Report</h5>
+                            <p>Instant prediction report generated after MRI upload, including probability scores.</p>
+                        </div>
+                        <a href="#predict-section" class="custom-btn btn">View Report</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  
+        </main>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/jquery.sticky.js' %}"></script>
+        <script src="{% static 'js/click-scroll.js' %}"></script>
+        <script src="{% static 'js/counter.js' %}"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
+
+    </body>
+</html>

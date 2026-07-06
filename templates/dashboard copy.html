@@ -1,0 +1,441 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriScan | AI-Powered Soil Analysis</title>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    {% include "nav.html" %}
+
+    <div class="fullpage-cover">
+        <div class="cover-overlay"></div>
+        <div class="cover-content">
+            <div class="left-panel">
+                <h1>Revolutionize Your Farming with <span>AI Soil Analysis</span></h1>
+                <p class="subtitle">Upload a soil image and receive instant nutrient analysis, crop recommendations, and sustainable farming advice powered by machine learning.</p>
+
+                <div class="key-features">
+                    <div class="feature">
+                        <i class='bx bx-check-circle'></i>
+                        <span>Instant soil health report</span>
+                    </div>
+                    <div class="feature">
+                        <i class='bx bx-check-circle'></i>
+                        <span>Personalized crop suggestions</span>
+                    </div>
+                    <div class="feature">
+                        <i class='bx bx-check-circle'></i>
+                        <span>Fertilization recommendations</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div class="upload-card">
+                    <div class="upload-header">
+                        <i class='bx bx-analyse'></i>
+                        <h2>Analyze Your Soil</h2>
+                        <p>Upload a clear image of your soil sample</p>
+                    </div>
+
+                    <div id="drop-zone" class="drop-area">
+                        <form action="/dpredict/" method="post" enctype="multipart/form-data" class="upload-form">
+                            {% csrf_token %}
+
+                            <div class="preview-container">
+                                <img id="preview" src="#" alt="Image Preview" class="preview-image"/>
+                                <div class="placeholder-content">
+                                    <i class='bx bx-cloud-upload'></i>
+                                    <p>Drag & drop soil image here</p>
+                                    <span>or</span>
+                                </div>
+                            </div>
+
+                            <input type="file" id="file" name="file" accept="image/*" hidden onchange="previewImage(event)">
+                            <label for="file" class="btn btn-primary">
+                                <i class='bx bx-folder-open'></i> Select Image
+                            </label>
+
+                            <button type="submit" class="btn btn-submit" id="submit-btn" disabled>
+                                <i class='bx bx-search-alt'></i> Analyze Now
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="upload-tips">
+                        <div class="tip">
+                            <i class='bx bx-sun'></i>
+                            <p>Natural light works best</p>
+                        </div>
+                        <div class="tip">
+                            <i class='bx bx-ruler'></i>
+                            <p>Include a scale reference</p>
+                        </div>
+                        <div class="tip">
+                            <i class='bx bx-image-alt'></i>
+                            <p>Multiple angles help</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional: Test if image loads -->
+    <!-- <img src="{% static 'bgk.png' %}" style="width: 100px;"> -->
+
+    <style>
+        :root {
+            --primary-color: #2E7D32;
+            --primary-light: #4CAF50;
+            --secondary-color: #FFA000;
+            --dark-color: #263238;
+            --light-color: #f5f5f5;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .fullpage-cover {
+            position: relative;
+            min-height: 100vh;
+            background: url("{% static 'bgk.png' %}") no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .cover-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .left-panel {
+            color: var(--white);
+        }
+
+        .left-panel h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .left-panel h1 span {
+            color: var(--secondary-color);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .key-features {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature i {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+        }
+
+        .right-panel {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+        }
+
+        .upload-card {
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .upload-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .upload-header i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .upload-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: var(--dark-color);
+        }
+
+        .upload-header p {
+            color: var(--dark-color);
+            opacity: 0.7;
+        }
+
+        .drop-area {
+            border: 2px dashed #ccc;
+            border-radius: var(--border-radius);
+            padding: 30px 20px;
+            text-align: center;
+            transition: var(--transition);
+            margin-bottom: 20px;
+            background: rgba(245, 245, 245, 0.5);
+        }
+
+        .drop-area.dragover {
+            border-color: var(--primary-color);
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        .preview-container {
+            position: relative;
+            margin-bottom: 20px;
+            min-height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .preview-image {
+            max-width: 100%;
+            max-height: 250px;
+            border-radius: calc(var(--border-radius) - 4px);
+            display: none;
+            object-fit: contain;
+        }
+
+        .preview-image.active {
+            display: block;
+        }
+
+        .placeholder-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+        }
+
+        .placeholder-content i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            opacity: 0.7;
+        }
+
+        .placeholder-content p {
+            margin-bottom: 10px;
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+
+        .placeholder-content span {
+            color: var(--dark-color);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .btn i {
+            font-size: 1.2rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-submit {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            margin-top: 20px;
+        }
+
+        .btn-submit:hover {
+            background-color: #FF8F00;
+            transform: translateY(-2px);
+        }
+
+        .btn-submit:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .upload-tips {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .tip {
+            background: rgba(76, 175, 80, 0.1);
+            padding: 12px;
+            border-radius: calc(var(--border-radius) - 4px);
+            text-align: center;
+        }
+
+        .tip i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .tip p {
+            font-size: 0.8rem;
+            color: var(--dark-color);
+            opacity: 0.9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .cover-content {
+                grid-template-columns: 1fr;
+            }
+
+            .left-panel {
+                text-align: center;
+            }
+
+            .key-features {
+                align-items: center;
+            }
+
+            .right-panel {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .fullpage-cover {
+                padding: 20px;
+            }
+
+            .left-panel h1 {
+                font-size: 2rem;
+            }
+
+            .upload-tips {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script>
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            if (file.size > 5 * 1024 * 1024) {
+                alert('File size exceeds 5MB limit');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function () {
+                const output = document.getElementById('preview');
+                output.src = reader.result;
+                output.classList.add('active');
+                document.querySelector('.placeholder-content').style.display = 'none';
+                document.getElementById('submit-btn').disabled = false;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        const dropZone = document.getElementById('drop-zone');
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('dragover');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.match('image.*')) {
+                const input = document.getElementById('file');
+                input.files = e.dataTransfer.files;
+                previewImage({ target: input });
+            }
+        });
+    </script>
+
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>
